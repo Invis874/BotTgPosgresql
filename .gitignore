@@ -1,0 +1,22 @@
+# Виртуальное окружение
+venv/
+env/
+ENV/
+
+# Файлы с секретами
+.env
+*.env
+!.env.example
+
+# Python кэш
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Базы данных
+*.db
+*.sqlite3
+
+# Логи
+*.log

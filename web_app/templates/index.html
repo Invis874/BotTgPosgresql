@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учет контингента</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Шапка с информацией о пользователе -->
+        <header class="header">
+            <h1>📊 Учет контингента</h1>
+            <div id="user-info" class="user-info"></div>
+        </header>
+
+        <!-- Основной контент -->
+        <main>
+            <!-- Выбор отделения -->
+            <div id="departments-view" class="view active">
+                <h2>🏢 Выберите отделение</h2>
+                <div id="departments-list" class="cards-grid"></div>
+            </div>
+
+            <!-- Выбор группы -->
+            <div id="groups-view" class="view">
+                <div class="view-header">
+                    <button class="back-btn" onclick="backToDepartments()">← Назад</button>
+                    <h2 id="department-title">👥 Группы</h2>
+                </div>
+                <div id="groups-list" class="cards-grid"></div>
+            </div>
+
+            <!-- Данные группы -->
+            <div id="data-view" class="view">
+                <div class="view-header">
+                    <button class="back-btn" onclick="backToGroups()">← Назад</button>
+                    <h2 id="group-title">📊 Данные</h2>
+                </div>
+                
+                <div id="data-container">
+                    <table id="data-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Количество</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-body"></tbody>
+                    </table>
+                </div>
+                
+                <button class="add-btn" onclick="showAddForm()">+ Добавить запись</button>
+            </div>
+
+            <!-- Форма добавления -->
+            <div id="add-view" class="view">
+                <div class="view-header">
+                    <button class="back-btn" onclick="cancelAdd()">← Отмена</button>
+                    <h2>✏️ Добавить запись</h2>
+                </div>
+                
+                <form id="add-form" onsubmit="saveData(event)">
+                    <div class="form-group">
+                        <label for="add-date">Дата:</label>
+                        <input type="date" id="add-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="add-count">Количество студентов:</label>
+                        <input type="number" id="add-count" min="1" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Сохранить</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
